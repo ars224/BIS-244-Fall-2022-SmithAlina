@@ -1,6 +1,6 @@
 library(tidyverse)
 library(here)
-#Import covid-19 data
+#Import covid-19 data 
 Counties_2020 <- read.csv(here("covid-19-data","us-counties-2020.csv"))
 Counties_2021 <- read.csv(here("covid-19-data","us-counties-2021.csv"))
 Counties_2022 <- read.csv(here("covid-19-data","us-counties-2022.csv"))
@@ -37,3 +37,4 @@ p <- ggplot(data = Lehigh)
 p+ geom_line(color="black",mapping = aes(x = date, y = incr_cases),group=1)+
   labs(x = "Date", y = "New Cases",
        title = "COVID-19 Cases Reported in Lehigh, PA")
+
