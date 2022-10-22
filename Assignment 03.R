@@ -8,6 +8,7 @@ recent <- read_csv(here("covid-19-data","us-counties-recent.csv"))
 live <- read_csv(here("covid-19-data","live","us-counties.csv"))
 
 #Combine Data
+
 Combined <- rbind(Counties_2020, Counties_2021, Counties_2022, recent, live)
 
 #Filter Data For PA and Lehigh 
