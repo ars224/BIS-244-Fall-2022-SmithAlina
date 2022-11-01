@@ -10,7 +10,7 @@ df1$x1 <- gsub("1","",as.character(df1$x1))
 library(dplyr)
 WOT_df <- filter(WOT_df , WOT_df$Battles > 3)
 
-
+#Graphing both ggplots side by side 
 plot_a <- ggplot(data = WOT_df) + geom_boxplot(mapping = aes(x=Nation , y=WR))
 plot_b <- ggplot(data = WOT_df) +geom_boxplot(mapping = aes(x=Class , y=WR))
 
