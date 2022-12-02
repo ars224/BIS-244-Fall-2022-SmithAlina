@@ -13,6 +13,8 @@ View(mass_shootings)
 install.packages(c("maps","mapdata"))
 library(maps)
 mass_shootings <- map_data("State")
+head(mass_shootings)
+dim(mass_shootings)
 p <- ggplot(data = mass_shootings,
             mapping = aes(z = long, y = lat,
                           group = group))
