@@ -12,7 +12,7 @@ View(mass_shootings)
 #map data frame
 install.packages(c("maps","mapdata"))
 library(maps)
-mass_shootings <- mass_shootings("State")
+mass_shootings <- map_data("State")
 head(mass_shootings)
 dim(mass_shootings)
 p <- ggplot(data = mass_shootings,
@@ -41,7 +41,7 @@ theme_map <- function(base_size=9, base_family="") {
 
 p0 <- ggplot(data = mass_shootings,
              mapping = aes(x = long, y = lat,
-                           group = state.name, fill = Killed))
+                           group = group, fill = party))
 p1 <- p0 + geom_polygon(color = "gray90", size = 0.1) +
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) 
 
