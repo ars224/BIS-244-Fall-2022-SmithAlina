@@ -11,20 +11,16 @@ live <- read_csv(here("covid-19-data","live","us-counties.csv"))
 
 Combined <- rbind(Counties_2020, Counties_2021, Counties_2022, recent, live)
 
-
-
 #Filter Data For PA and Lehigh 
 library(dplyr)
 CountiesPA <- filter(Combined, state == "Pennsylvania")
 view(CountiesPA)
-
 Lehigh <- filter(CountiesPA, county == "Lehigh")
 view(Lehigh)
 
 #Removal of duplicate dates
 library(dplyr)
 Lehigh <- distinct(Lehigh, date,.keep_all = TRUE)
-
 
 #Number of new cases 
 Lehigh$incr_cases <- 2
