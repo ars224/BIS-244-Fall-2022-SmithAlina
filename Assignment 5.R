@@ -14,11 +14,18 @@ View(mass_shootings)
 #map data frame
 install.packages(c("maps","mapdata"))
 library(maps)
-mass_shootings <- mass_shootings("State")
+
+#Failed to join the datasets : -30
+us_states <- map_data("state")
+
+mass_shootings$region <- tolower(mass_shootings$State)
+mass_shootings_state <- left_join(us_states, mass_shootings)
+
+#mass_shootings <- mass_shootings("State")
 head(mass_shootings)
 dim(mass_shootings)
-p <- ggplot(data = mass_shootings,
-            mapping = aes(z = long, y = lat,
+p <- ggplot(data = mass_shootings_state,
+            mapping = aes(x = long, y = lat,
                           group = group))
 
 p + geom_polygon(fill = "white", color = "black")
@@ -41,9 +48,9 @@ theme_map <- function(base_size=9, base_family="") {
     )
 }
 
-p0 <- ggplot(data = mass_shootings,
+p0 <- ggplot(data = mass_shootings_state,
              mapping = aes(x = long, y = lat,
-                           group = state.name, fill = Killed))
+                           group = group, fill = mass_shootings_state$`# Killed`))
 p1 <- p0 + geom_polygon(color = "gray90", size = 0.1) +
   coord_map(projection = "albers", lat0 = 39, lat1 = 45) 
 
